@@ -1,10 +1,10 @@
 # template.ps1
 
 param (
-    [Parameter(Mandatory=$true)][switch]$Gen,
-    [Parameter(Mandatory=$true)][string]$Platform,
-    [Parameter(Mandatory=$true)][string]$Type,
-    [Parameter(Mandatory=$true)][string]$TargetDir
+    [Parameter(Mandatory = $true)][switch]$Gen,
+    [Parameter(Mandatory = $true)][string]$Platform,
+    [Parameter(Mandatory = $true)][string]$Type,
+    [Parameter(Mandatory = $true)][string]$TargetDir
 )
 
 # Validate arguments
@@ -37,8 +37,8 @@ $tempDir = Join-Path ([System.IO.Path]::GetTempPath()) "project_template_$(Get-R
 
 # Map project type to template folder
 $templateMap = @{
-    "golang" = "templates/golang"
-    "meson_c" = "templates/meson_c"
+    "golang"    = "templates/golang"
+    "meson_c"   = "templates/meson_c"
     "meson_cpp" = "templates/meson_cpp"
 }
 
@@ -67,7 +67,8 @@ Remove-Item -Path $tempDir -Recurse -Force
 Set-Location $TargetDir
 if (Test-Path .git) {
     Write-Host "Git repository already exists in $TargetDir" -ForegroundColor Magenta
-} else {
+}
+else {
     Write-Host "Initializing new Git repository in $TargetDir..." -ForegroundColor Magenta
     Write-Host "Executing: git init" -ForegroundColor Green
     git init
@@ -89,7 +90,8 @@ if (Get-Command code -ErrorAction SilentlyContinue) {
     Write-Host "Opening VS Code in $TargetDir..." -ForegroundColor Magenta
     Write-Host "Executing: code ." -ForegroundColor Green
     code .
-} else {
+}
+else {
     Write-Host "VS Code not found, skipping..." -ForegroundColor Magenta
 }
 
