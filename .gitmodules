@@ -1,3 +1,6 @@
 [submodule "templates/local/golang/eng/base"]
 	path = templates/local/golang/eng/base
 	url = https://github.com/ks75vl/eng-base.git
+[submodule "templates/remote/golang-aarch64-linux/eng/base"]
+	path = templates/remote/golang-aarch64-linux/eng/base
+	url = https://github.com/ks75vl/eng-base.git
